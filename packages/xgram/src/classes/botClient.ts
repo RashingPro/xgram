@@ -1,5 +1,4 @@
 import TelegramBot, { Message } from "node-telegram-bot-api";
-import { Logger } from "@xgram/utilities";
 import { CallbackQueryStorage, CallbackQueryEntryOptions, CallbackQueryHandler } from "@/menu";
 
 interface RegisteredCommand {
@@ -21,7 +20,7 @@ const defaultCommandOptions: CommandOptions = {
 export interface BotOptions {
     token: string;
     polling?: boolean;
-    logger?: Logger;
+    logger?: LoggerLike;
 }
 
 type LoggerLike = {
