@@ -1,5 +1,6 @@
 import TelegramBot, { Message } from "node-telegram-bot-api";
 import { Logger } from "@xgram/utilities";
+import { CallbackQueryStorage, CallbackQueryEntryOptions, CallbackQueryHandler } from "@/menu";
 
 interface RegisteredCommand {
     command: string;
@@ -35,11 +36,16 @@ export class BotClient extends TelegramBot {
         super(token, { polling: polling });
 
         this.on("message", this.handleMessage);
+        this.on("callback_query", query => {
+            this.menuController.handleQuery(this, query);
+        });
+
         this.logger = logger ?? { log: console.log, warn: console.warn, error: console.error, debug: console.debug };
     }
 
     private registeredCommands: RegisteredCommand[] = [];
-    private readonly logger: LoggerLike;
+    public readonly logger: LoggerLike;
+    private readonly menuController: CallbackQueryStorage = new CallbackQueryStorage();
 
     private get registeredCommandsNames(): string[] {
         return this.registeredCommands.map(val => val.command);
@@ -83,5 +89,8 @@ export class BotClient extends TelegramBot {
             options: { ...defaultCommandOptions, ...options }
         };
         this.registeredCommands.push(commandObject);
+    }
+    public callbackQuery(key: string, handler: CallbackQueryHandler, options?: Partial<CallbackQueryEntryOptions>) {
+        this.menuController.registerCallbackQueryHandler(key, handler, options);
     }
 }
