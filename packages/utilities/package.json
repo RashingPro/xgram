@@ -1,0 +1,26 @@
+{
+  "name": "@xgram/utilities",
+  "version": "0.0.1",
+  "description": "",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "type": "module",
+  "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RashingPro/xgram.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {}
+}
