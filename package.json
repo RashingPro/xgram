@@ -1,0 +1,12 @@
+{
+  "name": "root-repo",
+  "version": "0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "workspaces": ["packages/*"],
+  "keywords": ["telegram", "api", "bot", "framework", "typescript", "tool", "utility"]
+}
