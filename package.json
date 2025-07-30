@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "prettier": "prettier . --write",
-    "lint": "eslint packages --fix"
+    "lint": "eslint packages --fix --ignore-pattern **/dist/**"
   },
   "author": {
     "name": "RashingPro",
