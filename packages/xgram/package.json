@@ -1,6 +1,6 @@
 {
   "name": "xgram",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -13,6 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/RashingPro/xgram.git"
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "node-telegram-bot-api": "^0.66.0",
-    "@xgram/utilities": "0.0.1"
-  }
+    "@xgram/utilities": "^0.0.1"
+  },
+  "files": ["dist"]
 }
