@@ -1,6 +1,6 @@
 {
   "name": "@xgram/utilities",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -13,6 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/RashingPro/xgram.git"
@@ -21,5 +22,6 @@
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "files": ["dist"]
 }
