@@ -7,6 +7,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "workspaces": ["packages/*"],
-  "keywords": ["telegram", "api", "bot", "framework", "typescript", "tool", "utility"]
+  "author": {
+    "name": "RashingPro",
+    "url": "https://rashing.pro/",
+    "email": "contact@rashing.pro"
+  },
+  "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "packages/*"
+  ],
+  "keywords": [
+    "telegram",
+    "api",
+    "bot",
+    "framework",
+    "typescript",
+    "tool",
+    "utility"
+  ],
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
 }
