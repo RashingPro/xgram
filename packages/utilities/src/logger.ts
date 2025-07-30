@@ -12,20 +12,22 @@ export enum LogLevel {
 export class Logger {
     constructor(public readonly logFile: string = "./latest.log") {
         try {
-            const dir = path.dirname(logFile)
-            fs.mkdirSync(dir, { recursive: true })
+            const dir = path.dirname(logFile);
+            fs.mkdirSync(dir, { recursive: true });
 
-            fs.appendFileSync(logFile, "") // create a file
+            fs.appendFileSync(logFile, ""); // create a file
 
-            const stat = fs.statSync(logFile)
-            if (!stat.isFile()) throw new Error()
+            const stat = fs.statSync(logFile);
+            if (!stat.isFile()) throw new Error();
 
-            fs.truncateSync(logFile, 0) // clear file
+            fs.truncateSync(logFile, 0); // clear file
 
-            this.logStream = fs.createWriteStream(logFile)
-            this.logStream.on("error", () => {throw new Error("Failed to write log file")})
+            this.logStream = fs.createWriteStream(logFile);
+            this.logStream.on("error", () => {
+                throw new Error("Failed to write log file");
+            });
         } catch {
-            throw new Error(`Invalid log file: ${logFile}. Please check path and permissions`)
+            throw new Error(`Invalid log file: ${logFile}. Please check path and permissions`);
         }
     }
 
@@ -78,7 +80,7 @@ export class Logger {
         let text = "";
         for (const obj of data) {
             let toBeLogged = this.objectToString(obj);
-            console.log(toBeLogged)
+            console.log(toBeLogged);
 
             if (text.length > 1) toBeLogged = " " + toBeLogged;
             toBeLogged += "[0m";
@@ -110,7 +112,9 @@ export class Logger {
         logFunc(text);
         try {
             await new Promise(resolve =>
-                this.logStream.write(text + "\n", () => {resolve(null)})
+                this.logStream.write(text + "\n", () => {
+                    resolve(null);
+                })
             );
         } catch (err) {
             console.error("Failed to log");
