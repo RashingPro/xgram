@@ -26,14 +26,22 @@ export class CallbackQueryStorage {
         return (number + 1).toString();
     }
 
-    registerCallbackQueryHandler(key: string, handler: CallbackQueryHandler, options?: Partial<CallbackQueryEntryOptions>) {
+    registerCallbackQueryHandler(
+        key: string,
+        handler: CallbackQueryHandler,
+        options?: Partial<CallbackQueryEntryOptions>
+    ) {
         const queries = Object.keys(this.storage);
         let newQuery = queries[queries.length - 1] ?? "0";
         while (queries.includes(newQuery)) {
             newQuery = this.getNextQuery(newQuery);
         }
 
-        this.storage[newQuery] = { key: key, handler: handler, options: { ...defaultCallbackQueryEntryOptions, ...options } };
+        this.storage[newQuery] = {
+            key: key,
+            handler: handler,
+            options: { ...defaultCallbackQueryEntryOptions, ...options }
+        };
     }
 
     handleQuery(bot: BotClient, query: CallbackQuery) {
