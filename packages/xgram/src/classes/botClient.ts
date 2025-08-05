@@ -23,7 +23,7 @@ export interface BotOptions {
     logger?: LoggerLike;
 }
 
-type LoggerLike = {
+export type LoggerLike = {
     debug: (...data: unknown[]) => void;
     log: (...data: unknown[]) => void;
     warn: (...data: unknown[]) => void;
@@ -36,7 +36,7 @@ export class BotClient extends TelegramBot {
 
         this.on("message", this.handleMessage);
         this.on("callback_query", query => {
-            this.menuController.handleQuery(this, query);
+            this.callbackQueryStorage.handleQuery(this, query);
         });
 
         this.logger = logger ?? { log: console.log, warn: console.warn, error: console.error, debug: console.debug };
@@ -44,7 +44,7 @@ export class BotClient extends TelegramBot {
 
     private registeredCommands: RegisteredCommand[] = [];
     public readonly logger: LoggerLike;
-    private readonly menuController: CallbackQueryStorage = new CallbackQueryStorage();
+    public readonly callbackQueryStorage: CallbackQueryStorage = new CallbackQueryStorage();
 
     private get registeredCommandsNames(): string[] {
         return this.registeredCommands.map(val => val.command);
@@ -90,6 +90,6 @@ export class BotClient extends TelegramBot {
         this.registeredCommands.push(commandObject);
     }
     public callbackQuery(key: string, handler: CallbackQueryHandler, options?: Partial<CallbackQueryEntryOptions>) {
-        this.menuController.registerCallbackQueryHandler(key, handler, options);
+        this.callbackQueryStorage.registerCallbackQueryHandler(key, handler, options);
     }
 }
