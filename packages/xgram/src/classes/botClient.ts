@@ -31,7 +31,7 @@ type LoggerLike = {
 };
 
 export class BotClient extends TelegramBot {
-    constructor({ token, polling = true, logger }: BotOptions) {
+    public constructor({ token, polling = true, logger }: BotOptions) {
         super(token, { polling: polling });
 
         this.on("message", this.handleMessage);
