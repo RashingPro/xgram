@@ -19,12 +19,12 @@
     "url": "https://github.com/RashingPro/xgram.git"
   },
   "devDependencies": {
-    "@types/node-telegram-bot-api": "^0.64.9",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "node-telegram-bot-api": "^0.66.0"
+    "node-telegram-bot-api": "^0.66.0",
+    "@types/node-telegram-bot-api": "^0.64.9"
   },
   "files": [
     "dist"
